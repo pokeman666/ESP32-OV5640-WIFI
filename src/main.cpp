@@ -10,7 +10,7 @@ const char* URL = "/Stream";
 camera_fb_t * fb = NULL;
 // const int FRAME_RATE = 10;
 
-/* 创建一个HTTP服务对象 在这里提供视频流 */
+/* 创建一个HTTP服务对象 在这里提供视频流 默认使用80*/
 WebServer server(80);
 
 void handleStream() {
@@ -30,6 +30,7 @@ void handleStream() {
       continue;
     }
     
+    /* 将格式化字符串写入字符数组 */
     sprintf(head,
             "--frame\r\n"
             "Content-Type: image/jpeg\r\n"

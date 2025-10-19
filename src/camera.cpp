@@ -74,11 +74,18 @@ uint8_t camera_init(void)
     sensor_t * s = esp_camera_sensor_get();
     Serial.printf("Camera ID: 0x%02X \n", s->id.PID);
 
-    s->set_brightness(s, 0);     // -2 to 2
-    s->set_contrast(s, 0);       // -2 to 2
+    /* 
+    亮度
+    对比度
+    饱和度
+    水平镜像
+    垂直反转
+     */
+    s->set_brightness(s, 1);     // -2 to 2
+    s->set_contrast(s, 1);       // -2 to 2
     s->set_saturation(s, 0);     // -2 to 2
     s->set_hmirror(s, 1);       // 0,1
-    s->set_vflip(s, 1);         // 0,1
+    s->set_vflip(s, 0);         // 0,1
 
     if (s->id.PID == OV2640_PID) {
         s->set_vflip(s, 0);         // 0,1
